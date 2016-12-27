@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by Administrator on 2016/12/21.
- */
 @Controller
 public class NoInterceptor {
     @Autowired
