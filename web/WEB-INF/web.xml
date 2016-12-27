@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <!--默认打开界面-->
+    <welcome-file-list>
+        <welcome-file>userLogin.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- 加载Spring容器  初始化-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+         <param-value>classpath:spring/applicationContext.xml</param-value>
+    </context-param>
+
+    <!--设置加载监听器-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!--SpringMVC支持   执行加载等待请求  与servlet-mapping配套使用-->
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/applicationContext.xml</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <!--&lt;!&ndash;执行加载等待请求  与servlet-mapping配套使用  rest风格   规范&ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>SpringMVC_rest</servlet-name>-->
+        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+        <!--<init-param>-->
+            <!--<param-name>contextConfigLocation</param-name>-->
+            <!--<param-value>classpath:spring/applicationContext.xml</param-value>-->
+        <!--</init-param>-->
+    <!--</servlet>-->
+
+    <!--&lt;!&ndash;对于以“/”进行过滤 要配置相应的静态资源过滤&ndash;&gt;-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>SpringMVC_rest</servlet-name>-->
+        <!--<url-pattern>/</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+</web-app>
